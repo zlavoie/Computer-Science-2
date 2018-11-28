@@ -1,0 +1,8 @@
+Hotel 212.00
+Bicycle 162.90
+Theater 250.00
+Gas 177.88
+Dogfood 89.56
+Groceries 138.50
+Clothing 234.66
+Insurance 178.50

@@ -1,0 +1,11 @@
+Sociology  A
+Physics  B
+Psychology   C
+CompSci  B
+Calculus  A
+Etiquette F
+Philosophy C
+History B
+German A
+English D
+Spelling F

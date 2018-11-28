@@ -1,0 +1,34 @@
+//Zoe Lavoie
+import java.util.*;
+
+public class Reverse1
+{
+  public static String reverse(String s)
+  {
+    String a;
+    String here = "";
+    
+    for(int i = s.length() - 1; i >= 0; i--)
+    {
+      if(!Character.isDigit(s.charAt(i)) && !Character.isLetter(s.charAt(i)) && !Character.isWhitespace(s.charAt(i)))
+      {
+        throw new RuntimeException();
+      }
+      
+      a = "" + s.charAt(i); 
+      here = here + a;
+    }
+    
+   return here; 
+  }
+  
+  
+  
+  public static void main(String[] args)
+  {
+    Scanner input = new Scanner(System.in);
+    
+    String t = input.nextLine();
+    System.out.println(reverse(t));
+  }
+}

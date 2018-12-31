@@ -1,0 +1,232 @@
+CS 104
+Computer Science II
+
+Assignment4
+Due THURSDAY Feb 22
+(click on the pictures for a video)
+             
+ 
+1.  An Integer Set
+
+
+       a.    Define a Mergeable interface with one method
+                                   
+                                  Object merge(Object x). 
+
+         Notice that the types are Object.
+b.    Design a class IntegerSet that implements Mergeable.  
+IntegerSet stores a set or collection of integers such as  {3,6,1,2,89,65,74,324,5}.  There are NO DUPLICATES. 
+
+The data should be stored in an integer array.  There should also be a variable that keeps track of the size of a set.  The maximum size of  a set is 1000 ( a constant, MAX_SIZE).
+
+Methods of IntegerSet should include:
+            void printElements()
+             int size();
+             boolean elementOf(int x);      // is x a member of the set?
+             void add(int x)                     // adds x to a set,  set has no duplicate items
+                       Override 
+                                                boolean equals(Object o) 
+                               inherited from Object so that two sets are equal if they have the same elements
+ There should be 
+one default constructor that creates an empty set and
+a two argument constructor that accepts an array of int along with the size and creates
+      an IntegerSet.  Note: the array may have duplicates but the set cannot.
+Define the method
+                Object merge(Object x)   
+declared in the Mergeable interface so that if x and y are  IntegerSet  objects then x.merge(y) returns a reference to an IntegerSet, z, containing the integers in x and  y. Of course, set z contains no duplicates.  For example if x = { 1,2,3,4,5} and y = { 3,4,5,6,7,8} then z = {1,2,3,4,5,6,7,8}.
+
+Test you class by making a class TestIntegerSet that includes  the following main method:
+ public static void main(String[] args)
+  {
+     int[] list = {1,2,3,4,5,5,5};
+     IntegerSet s = new IntegerSet(list,7);
+     IntegerSet t = new IntegerSet();  //empty set
+
+     Object mergedSet; // a merged set, notice the type is Object
+
+     for (int i = 10; i >= 3; i--)
+          t.add(i);
+
+     System.out.println("The elements of set s are ");
+     s.printElements();
+     System.out.println();
+     System.out.println("The elements of set t are ");
+     t.printElements();
+     System.out.println();
+
+     mergedSet = s.merge(t);
+     System.out.println("The merged sets: ");
+     ((IntegerSet)mergedSet).printElements(); // notice the downcast
+
+     int [] list1 = {1,2,3,4,5};
+     IntegerSet w = new IntegerSet(list1,5);
+     System.out.println("s equals w: " +s.equals(w));
+     System.out.println("s equals t: " +s.equals(t));
+}
+c.        A particular lottery allows people to play any set of  numbers from 1 through 1,000,000.  Each number played costs $1.  There is one winning number chosen each week.  A group of friends play the lottery and each one has some set of favorite numbers.  Possibly, some of the friends have chosen the same numbers.  They decide to pool their numbers and split the winnings if any one of their numbers wins.   
+Write a test class, Lottery, that creates three IntegerSet objects, containing the lottery numbers played by three different friends.  Your test class should create a merged set from the three sets and print out all the numbers in it, and how much it will cost to play these numbers (i.e.,  how many numbers). Remember Merge returns Object so you may have to downcast as in the main(...) method of part (b).
+2. A Student class
+
+a. Here is the binary search method from CS 103 .  This method searches a sorted  array of integers.
+public static int search(int[] x , int n, int key) 
+// pre-condition: x is a sorted array of n integers; key has an integer value 
+//                        x is sorted in ascending order; 
+// returns:  the position of key in x or -1 if key is not found 
+
+{ 
+    int lo = 0;                          // lowest index of the array 
+    int  hi = n-1;                     // highest index 
+    int  mid;                           // middle index 
+     while (hi >= lo)  
+    { 
+         mid  = (hi + lo)/2;        // get the middle index 
+         if (key == x[mid]) 
+              return mid;            //key found --exit 
+         if (key < x[mid]) 
+             hi = mid - 1;          //eliminate x[mid] thru x[hi] 
+         else 
+               lo = mid + 1;         // eliminate x[lo] thru x[mid] 
+     }
+       return -1;                        // key not found
+}
+Implement a utility class BinarySearch with one static method that can perform a binary search on a sorted array of any object type that implements Comparable.  Remember to search an array with binary search,  the array must be sorted.  Look at what I did with selection sort.
+
+This is very simple and you need only change a few statements in the old  binary search.  You are now sorting Comparable objects not ints.
+
+b. Implement an abstract class Person has the following fields
+String lastName
+String firstName
+String SSNumber
+Include a default constructor, a three argument constructor, and getter and setter methods. 
+Person implements Comparable based on the String  lastName+firstName.  (remember String has a compareTo() method)
+Person also implements 
+                boolean equals(Object o) 
+based on lastName+ firstname 
+ 
+c.  A Student class extends Person  (a Student is-a Person) and has the additional fields
+
+          double GPA 
+          String campusAddress; 
+  Student has the appropriate constructors.
+Student implements
+                String toString(), (inherited from Object)
+which returns all the information about the student
+ 
+d. Another class Roster has as data
+
+         an array of Student[],                  (assume at most 35 students)
+         the number of students in the class (int)
+
+    The constructors are
+a default constructor that makes an empty roster 
+a constructor that reads a text file such that
+           each line of the file consists of:
+
+                  lastName  firstName  SSNumber  GPA  campusAddress
+            
+The methods are: 
+void sort()      // sorts by lastName + " "+ firstName, you can just call the generic/utility sort from class (SelectionSort.sort(...))
+int search (String lastname, String firstname)  // calls the static binary search
+                
+
+The class uses the binary search to find the student and prints that student's  data (uses toString()) or
+                   a message that the student is not in the class 
+    Hint: The search method of the class accepts   the last name and first name of a student.
+            However, the utility  binary search method accepts a object.  So you will have to pass a
+            Student object to the static binary search method.  
+            You can use dummy fields for SSNumber, gpa, and campusAddress:
+                                    Student key = new Student(last, first, "",0.0,"");  
+
+             and pass  key to the binary search method (which searches on name only).
+ 
+int addStudent(Student s)  // make sure to sort after an addition
+printClass() //prints all data for each student in the class, 
+void menu()
+                 // prompts for a string  
+"S"  search
+ "A"   add a student
+ "P"    print the class roster
+ "E" exit
+void performAction(String choice)
+// performs the action indicated by choice  
+this routine works as:
+if (choice.equals("A"))
+{
+   // ask for the data for a student, last name, first name, gpa etc
+   // creat a student object s
+  // call add(s);
+}
+else if (choice.equals("S"))
+{
+ // ask for the last name and first name
+ // pass this to search and search() returns an int ( -1 if not found)
+// the int returned is the place in the array, so print the data or say "not found"
+}   
+else if (choice.equals("P")
+// print all the data in the array       
+Include a main method in Roster:
+            public static void  main(String [] args)
+            {
+                Roster r = new Roster("students.txt");
+                String choice;
+                do
+                {
+                    System.out.println();
+                    choice = r.menu();
+                    r.performAction(choice);  
+                    System.out.println();
+                    } while (!choice.equals("E"));
+            }
+You can download students.txt here.  
+All data is stored in  upper case.  However, a user need not enter the data in upper case, so use the method toUpperCase() from the String class to convert all user data to upper case.
+Here is typical output. User input is in red.
+
+S : search for a student
+A : add a student
+P : print all student
+E : exit
+Choice: S
+Last name: Simpson
+First name: Bart
+SIMPSON BART 234444443 1.0 OHARA
+
+
+S : search for a student
+A : add a student
+P : print all student
+E : exit
+Choice: A
+Last name: GRIFFIN
+First name: STEWIE
+SS Number: 34567129
+GPA: 4.0
+Campus Address: BOLAND
+
+
+S : search for a student
+A : add a student
+P : print all student
+E : exit
+Choice: S
+Last name: GRIFFIN 
+First name: STEWIE
+GRIFFIN STEWIE 34567129 4.0 BOLAND
+
+
+S : search for a student
+A : add a student
+P : print all student
+E : exit
+Choice: S
+Last name: D
+First name: PAULY
+D PAULY: not found
+
+
+S : search for a student
+A : add a student
+P : print all student
+E : exit
+Choice: E
+Bye
+ 

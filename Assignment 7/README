@@ -1,0 +1,127 @@
+Assignment 6
+Due March 27
+
+ 
+1.    A thrown exception can be handled in many different ways.  For example, suppose method myMethod() throws an exception.  It might be
+      ---  caught by myMethod(),
+---  caught by a method that calls myMethod(), 
+---  not caught at all in the program  (i.e. caught eventually by the system).  
+
+
+Write three classes: Reverse1, Reverse2, and Reverse3, each of which has a reverse(...) method that accepts a string  and returns the string in reverse.  If the String contains any characters other than letters or digits, however, your program should throw an IllegalCharacterException.  The catch block should print: "IIlegal Character in String", the actual string,  and the name of the class.
+
+An  IllegalCharacterException is thrown  if a character is not in the set {'a'..'z', '0'..'9', 'A'..'Z}.  You have to write the IllegalCharacterException class and it extends Exception.
+
+--- Reverse1 throws the exception in reverse(...) but is not caught by reverse(...) or main (i.e.,
+no explicit catch block).  The exception is caught by the system.  Both reverse(..) and main will need to have a "throws" clause.
+ 
+--- Reverse2 throws the exception in reverse(...) and catches the exception in main.  Only reverse(...) will need a "throws" clause
+.
+--- Reverse3 throws and catches the exception in reverse(...).  No method needs a "throws" clause. 
+
+For each class, include a main method that reads a string from input, passes it to reverse(...), and prints the reverse string. Output should be the String in reverse or an error message.  So there are three programs Revers1.java, Reverse2.java, and Reverse3.java.  The only difference among the classes is  where the exception is caught.
+  
+[-2147483648, +2147483647]
+
+
+2. The range of Java's  type int is 
+  
+-2,147,483,648     to +2,147,483,647 inclusive. 
+That is 2,147,483,647 is the largest number of type int and -2,147,483,648 is the smallest. In the world of Java int, the number line is not infinite! It goes from -2,147,483,648 to +2,147,483,647 , inclusive.
+  
+These largest and smallest int values can be accessed  as the constants
+                                                           Integer.MAX_VALUE       and 
+                                                            Integer.MIN_VALUE 
+  
+You might assume that adding even 1 to the largest integer
+                                Integer.MAX_VALUE + 1  =   2,147,483,647 + 1 
+ causes a runtime (integer overflow) error.   
+However, this is not the case.  Numbers larger than 2,147,483,647 “wrap around” to  negative values , while numbers smaller than -2,147,483,648 “wrap around” the other way to  positive values.  That is,
+2,147,483,647 + 1 = -2,147,483,648, and 
+ -2,147,483,648 – 1 =  +2,147,483,647.
+ 
+ 
+  
+Consequently, integer addition never throws a run-time exception.  In some situations, however, it might be preferable if integer addition did throw overflow and underflow exceptions.  Otherwise, a logical bug might go undetected.  
+Write an Arithmetic class that implements a single static method
+public static int add( int a, int b),           
+The add(..) method should throw an OverflowException or an UnderflowException if the sign of the result does not make sense. OverflowException is thrown when the sum of two positive integers is negative, and UnderflowException is thrown when the sum of two negative integers is positive.   Note that the sum of a positive integer and a negative integer is always legitimate, and never results in overflow or underflow.
+You will have to write the OverflowException and UnderFlowException clases.  Both should extend Exception.
+ 
+Test your method with the following class:
+
+import java.util.*;
+public class TestAdd
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            Scanner input = new Scanner(System.in);
+            String num1= ""; 
+            String num2= ""; 
+            int a, b;
+            // read in the numbers as Strings
+           //If the uses enters "max" the number is INTEGER.MAX_VALUE i.e. 2,147,483,647
+           //If the user enters "min" the numbe is Integer.MIN_VALUE i.e -2,147,483,648
+
+           System.out.println("Enter two integers (max designates MAX_INT and min designates   MIN_INT:" );
+            num1 = input.next();
+            if (num1.equals("max"))
+                a = Integer.MAX_VALUE;
+            else if (num1.equals("min")) 
+                a = Integer.MIN_VALUE;
+            else a = Integer.parseInt(num1);
+
+            num2 = input.next();
+            if (num2.equals("max"))
+                b= Integer.MAX_VALUE;
+            else if (num2.equals("min"))
+                b = Integer.MIN_VALUE;
+            else 
+                b = Integer.parseInt(num2);
+
+            int sum = Add.add(a,b);
+            System.out.println("Sum = "+ sum);
+        }
+        catch(OverflowException e)
+        {
+             System.out.println( e.getMessage());
+        }
+        catch(UnderflowException e)
+        {
+              System.out.println( e.getMessage());
+        }
+    }
+}
+ 
+_________________________________
+3. a. Write a class Box that implements Comparable
+        A Box has length, width and height (int)
+        Include constructors and getters and an int volume() method
+        Implement compareTo(...) based on volume.
+        Include toString() which returns the labeled dimensions
+b. Write a utility class Biggest with one static method, max,  that returns the largest object in an array
+                        public static Object max(Comparable[] x, int size)
+        Test your method with a class that
+makes an array of 10 random Integers (Range 0-100) and determines the largest
+makes an array of 10 random Doubles (Range 0.0-1.0) and determines the largest (Use Math.random())
+makes an array with 5 random Box objects dimensions in the range 1 - 30 and determines the largest Box in the array.
+makes an array with 5 Strings and determines the largest alphabetically. You can hard wire the strings into the program
+for example String names = {"Jerry", "George", "Elaine", "Newman", "Kramer"}
+Notice that the return type is Object. These classes do not belong to the same hierarchy.
+Your output should look like this:
+The integers are
+36 83 19 81 90 23 24 14 85 53
+The largest is 90
+The doubles are
+0.9806765824344044  0.1608021149901061  0.9997966546190725  0.9795866183334588  0.9076738397813645
+The largest is 0.9997966546190725
+The Boxes are
+Box: length = 11 width = 25 height = 14 Volume: 3850
+Box: length = 3 width = 12 height = 20 Volume: 720
+Box: length = 24 width = 12 height = 1 Volume: 288
+The largest is Box: length = 11 width = 25 height = 14 Volume: 3850
+The Strings are
+Jerry George Elaine Newman Kramer
+The largest is Newman

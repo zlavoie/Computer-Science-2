@@ -1,0 +1,124 @@
+CS 104
+Computer Science II
+
+
+Assignment 1
+Due Thursday February 1, 2018
+ 
+1.     jumble.java
+
+
+The JUMBLE is a puzzle that rearranges the letters of a word. Normally your task is to unscramble the letters and discover the original word.  
+However, for this assignment you will take a word and create a jumble or mixed up version.
+
+Write a program that accepts a word and produces a “jumbled” version.  For example, the letters of the word “TAKEN” 
+might be scrambled as “AKNET”.  
+
+You can scramble the letters of a word by repeatedly exchanging a randomly a chosen letter with the
+ first letter.  Ten exchanges is more than enough to jumble a 5 or 6 letter word.  Use the Random class
+If you have forgotten how to use the Random class, you can download directions here.
+
+You can do this any way you like but one suggestion is use StringBuilder and the method setCharAt(int i)
+Use a method to do the work and return the jumbled word.  Do not do the jumbling in main(...); 
+
+Use this as your main method:
+public static void main(String[] args)
+{
+     Scanner input = new Scanner(System.in);
+     System.out.print("Enter a word use XXX to end the program: ");
+     String word = input.nextLine();
+     while (!word.equals("XXX")
+     {
+          System.out.println("The jumbled word is "+jumble(word));
+          System.out.print("Enter a word use XXX to end the program: ");
+          word = input.nextLine();
+      }
+}
+
+ 
+The next programs use text files.  
+You can download some instructions on how to use files file instructions here. 
+2.      grades.java
+
+A text file stores the courses you have taken along with the corresponding grade (A,B,C,D, or F) that you received in each course.  
+First create a text file courses.txt with the following data ( to make things simple each subject is a single word
+       Sociology  A
+       Physics  B
+       Psychology   C
+       CompSci  B
+       Calculus  A
+    Etiquette F
+       Philosophy C
+       History B
+       German A
+       English D
+       Spelling F
+
+Write a program that uses the  file to calculate your grade point average (GPA). 
+A GPA is based  on a scale from 0 to 4, where A is 4, B is 3, C is 2, D is 1, and F is 0.  
+You should print the GPA to the screen with two decimal places such as 3.62.
+ 
+This should help when printing a number rounded to  two decimal places :
+Print 3.23656789 as 3.24:  
+         You can do this as 
+                    Math.round(3.23656789 *100)/100.00
+Here is how it works:
+(3.23656789 x 100) = 323.656789
+Math.round(323.656789) = 324
+324/100.0 = 2.24
+ 
+ 
+The next two problems are from a programming contest. 
+ 
+3.  doublet.java
+
+A doublet is a pair of words of the same length that differ in exactly one letter; for example booster and rooster are doublets as are rooster and roaster or roaster and roasted or time and tire or tire and tare or tare and tart or tart and wart
+INPUT:
+ A file doubletfile.txt containg an arbitrary number of lines.  Each line has two words, which may or may not be doublets.  All words are lower case
+For example:
+        rooster booster
+        roaster rooster
+        roasted rooster
+OUTPUT: (to a file doubletout.txt)
+         rooster booster -- doublet
+         roaster rooster -- doublet
+         roasted rooster -- not doublet 
+A short list of doublets and non-doublets that you can use for input can be found here
+ 
+4. wordsearch.java 
+Given an n by m grid of letters and a list of words, find the location in the grid at which the word can be found. 
+A word matches a straight uninterrupted line of letters in the grid.  The matching can be done in any of eight horizontal, vertical, or diagonal directions through the grid.  Here is an example from the web.
+
+There is  a file wordgrid.txt.  
+The first line consists of two integers m and n  giving the dimensions of the grid.
+The next n lines give the rows of the grid
+Following the grid is another number k followed by k words.  Here is a sample
+8 11
+abcdefghigg
+hebkwaldork
+ftyawaldorm
+ftsimrlqsrc
+byoarbedeyv
+klcbqwikomk
+strebgadhrb
+yuiqlxcnbjf
+6
+waldorf 
+bambi 
+betty 
+dagbert 
+dopey
+waldo
+
+ 
+OUTPUT:
+For each word in the list, output to the screen, a pair of integers indicating  the he row and column in the grid where the word begins.  
+waldorf 1 4
+bambi 1 2
+betty 0 1
+dagbert 6 7
+dopey Not found
+wag 2 4
+You can get data for the program here
+This could be a messy program if you do not plan it properly.   Break the work up into several methods.  Irt will be much easier that way.
+ 

@@ -1,0 +1,43 @@
+CS 104
+Computer Science II
+
+
+
+ASSIGNMENT 9
+Due April 19
+1.   The following game consists of  a sequence of circles, some black and some red arranged randomly in a row.  For example:
+
+or
+
+A player must remove all circles according to the following rules:
+1. the player chooses a black circle, which is removed
+2. the colors of the chosen circle's immediate neighbors are flipped.  That is, if a neighbor is black it becomes red and if a neighbor is red it becomes black.  Two circles are neighbors if they are next to each other in the original lineup.  If there is a gap between two circles, they are not neighbors
+The following shows a sequence of moves for the configuration shown above.  The circle with an X is the one removed at each stem
+
+ 
+A player can always succeed if the initial number of black circles is odd.  There is no solution if the number is even.
+ Write an application that lets a user play this game.
+You can place the circles on buttons, or labels, or draw them on a panel.  Your choice.
+In fact, you don't have to use circles at all, you can use two pictures, such as Homer And Bart Simpson, Tweety and Sylvester, or Napoleon Dynamite and Pedro.
+Your GUI should have a text box that allows the user to input the number of circles. You should put a limit on the number of circles because they should be in a single row.  If the number in the text box is too big or ill-formatted, throw an exception and use a MessageDialog box to point out the error.
+There should also be a Play button that sets up the board.  Remember the circles are arranged randomly but the number of black circles must be odd or there is no solution to the game.  
+Your GUI should always show one row of circles, the current configuration.  The row should show the gaps left by removing circles.
+Each time the play button is clicked a new game appears.
+There should also be an Exit button.  
+The rest of the GUI is up to you.  Your choice, your design.
+ If the circles do not show up, you may need to include the command 
+               revalidate();
+in your program after you place the panel in the frame.
+3. 
+ 
+Write a program with a GUI to play Deal or No Deal.  The entire design is completely up to you.  Here is a Wikipedia description of the game.  Here are the rules You are the architect. Here is an online version...  You can also see it on YouTube.  Of course your version can just use buttons for each suitcase.  So you entire GUI can be buttons and dialog boxes.
+However, one question that you must decide is "how much should the banker offer for a deal?"   The answer is not clear.  Suppose for for example there are three cases left  with values 
+                            5000, 20000 and 100000
+The average value is (5000+20000+100000)/3 = 125000/3 = 41666.67 ~$41,667
+That would be the reasonable probabilistic offer.   But it is not the offer the banker actually makes.
+One website says that the formula is
+                banker's offer = average value * turn number / 10
+another says 
+            bankers offer = average value * .25
+So , you might use one of those, one of your own, or find another formula on the web..
+This program  counts for two programs.  

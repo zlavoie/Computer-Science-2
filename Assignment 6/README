@@ -1,0 +1,111 @@
+CS 104
+Computer Science II
+
+
+
+ASSIGNMENT 5
+Due Thursday, March 15
+This is after Spring Break
+And click the pictures
+   
+ 1.     Inheritance and Polymorphism - Publishing
+      This is problem 5 on page 622 in the text.
+ 
+Design a class hierarchy consisting of Publication, Magazine, Book, and KidsMagazine classes as described below. 
+A Publication has a publisher, number of pages, a price, and a title.  The class should implement a toString() method that displays all of this information. This class should be abstract.  
+A Magazine is a kind of publication that has a publication unit (monthly, weekly, bi-weekly).  Magazine should have toString()  that display all the  information.  
+A Book is a kind of publication that has an author.  Book should also have toString() 
+A KidsMagazine is a kind of magazine that has a recommended age range.  Again, KidsMagazine should have toString()
+  
+Implement a test class that stores 10 different types of publications:  magazine, book, or kid’s magazine in an array of Publication.  Exploit polymorphism and print the information, sorted by title, about each object stored in the array.
+Store the data for the 10 items in a file publications.txt and read the data from the file.  You use a number 1,2, or 3 ( or any thing you like, a string or a letter) in your data to indicate whether the information that follows ia a magazine, a book or a kids magazine.
+Make your own file. 
+ 
+
+2.      A Polymorphic Video Store  -- 
+A very outdated problem-- 
+What's a  video Stores? 
+      This is problem 9 on page 626 
+Your friend Electronic Eddie has decided to open a business that rents movies and games. Unfortunately, Eddie has very little startup money and cannot afford to buy the latest software package to manage his inventory.  As a programmer without peer, you have come to Eddie’s rescue and have volunteered to write a system for his business. 
+Your first step is to design a class hierarchy which includes the following classes: 
+Item  with the following attributes: 
+a 3-digit ID number (String)
+a title (String) (use dashes to separate words)
+rental price (double)
+status (boolean: true(1) if in stock, false(0) if currently rented)
+the current renter’s name (String) 
+                 (lastname,firstname)
+The methods of  Item are the standard getter and setter methods as well as method
+                               
+                    void display()  
+which  displays the string "Not applicable"                               
+Game (extends Item) with the following additional attributes: 
+    age level (an integer from 3 to 16, 16 signifies 16+ ) 
+Movie  (extends Item) with the following additional attributes: 
+playing time in minutes (int)
+rating : G, PG, PG13, or R (String)
+format: ‘V’ for VHS cassette, ‘D’ for DVD (char) 
+Each class implements a display() method that prints all the data of the invoking object . 
+Once you have implemented the above classes, you should design and implement a program that utilizes the Item hierarchy.  Your system should be menu-driven and include the following options: 
+a.        Check out an item.
+Your system should query the user for the ID number of the item and the renter’s name.  If the item is already checked out your system should say so.
+b.       Check in an item.
+Your system should ask for the ID number of the item. If it is already checked in, indicate that.
+c.        Search for an item by ID number to see if it is in stock.
+You should use binary search for this option.  Consequently, all rental items are kept sorted by ID number.
+d.       Search for an item by title.
+Since the rentals are not sorted by title, you might use sequential search here.
+If the title is not in the inventory, say so.
+e.        Display the entire inventory, sorted by ID.
+f.         Add a new item to the inventory.
+g.       Delete an item from the inventory (equivalent to selling a used video or game).
+Ask for the ID number of the item to be deleted. If the ID doesn’t match one of the items in inventory, a message  should be printed.
+h.       Display the menu
+i.         Exit
+When the program begins, the program should 
+obtain data for each item from a file, and 
+store the data in an array of objects sorted by ID number. 
+You must create a file, say data.txt with  30 items in it -- 10 games and  20 movies.  Use one line in a file for each item.  The first entry on each line should be either G or M.  Do not include spaces in the title of the movie or the renter's name, use dashes instead.  A typical entry
+for movies has the format
+    
+M id title fee running-time rating "D(vd) or V(hs)" "1 or 0 i.e. In or Out" renter
+For Games
+        G id title fee status  "1 for In or 0 for Out" age-level renter
+For example:
+M 357 Up-In-The-Air 3.00 123 R D 1  Gooche,Agnes
+G  847 Wii-Sports 4.50 1 12  Griffin,Stewie
+ 
+3.      A Move Interface for Generating Moves in a Game 
+ This is problem 6 on page 623 
+
+
+
+Different games utilize various methods to determine the moves of the players.  When playing  Candy Land, a player picks a card that displays the color of the square to which he/she should move.  A Monopoly player rolls two dice; and to play Chutes and Ladders, a player uses a spinner that points to numbers between 1 and 6 inclusive. 
+  
+To write applications that play these games, you might 
+·         display the move generator (graphics typically) – a picture of rolling dice, or a spinning spinner, or a card being uncovered, and 
+·         indicate the value of the move, e.g., the number displayed on the dice or pointed to by the spinner, or the color shown on the uncovered card. 
+ Of course, at this point, you have no graphics capability, but soon you can do this. 
+For this project, you should 
+a.        Create an a Move interface with two methods: 
+·         void display() – Prints the type of move generator (dice, spinner, card)
+ Or if you like, a rough "picture" composed of ASCII characters
+        
+·         int getValue() – returns a value representing the move to be made. 
+  
+b.       Implement Die and Spinner classes, which simulate respectively, a die/spinner with n sides/slots, each slot occurring with equal probability.
+
+c.        Implement a CandyCard class such that the getValue() method returns a random integer between 1 and 5 inclusive, representing one of the colors: blue, green, yellow, brown or pink.  The getValue() method should display the name of the color as well as return its code number. 
+In a certain game, a player is allowed to make his/her next move by 
+·         rolling any one of four different dice, 6-sided, 12-sided, 20-sided, or 8-sided, or 
+·         spinning any one of three spinners with 4, 7, or 9 slots, or 
+·         picking a card displaying one of five colors. 
+  
+Design and implement an application  that repeatedly asks the player which method he/she wishes to use and then displays the method (its name or “picture”) as well as the value of the move. 
+  
+ 
+
+    
+
+
+   

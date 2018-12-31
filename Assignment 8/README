@@ -1,0 +1,22 @@
+CS 104
+Computer Science II
+ASSIGNMENT 7 
+
+
+Due: Tues,  April 3
+    
+
+An ID Card
+Using BorderLayout, design an ID card with your picture (or any picture you get off the web or draw in Paint) in the center, your name on the top, and your personal information (height, weight, eye color, address) split left and right.  The bottom section of the card should display “Java Programmer ”.  The ID card should be the size of a typical driver’s license ( 250 x 150), place it at position (0,0) and do not allow resizing. 
+ 
+ 
+  2. Faces
+ 
+ 
+Create a frame with three buttons in the NORTH section of the frame.  The buttons should be labeled with the names of three of your favorite TV or movie characters such as Moe, Larry, and Curly,  or Bart, Homer, and Marge or perhaps Sleepy, Dopey, and  Grumpy.  
+Place a label in the CENTER section of the frame.  It would be nice if, when you click a button, a picture of the corresponding character appears on the label.  However, button-clicking is a topic for the next chapter.  For the present, the constructor should place a randomly chosen image, of one of the three characters in the CENTER section of the frame.  Because the image is randomly chosen, the same picture does not show each time the frame is instantiated.  In the SOUTH section of the frame include a quotation from the character or caption about the character. 
+  
+Include a main(...) method that instantiates your frame.
+If you need a picture, there are pictures of  Homer, Marge, and Bart and some other characters on the course web page under “OtherStuff.”  Or grab one from the web , or use your own from Hillnet.
+ 
+  
